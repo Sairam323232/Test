@@ -1,6 +1,6 @@
 FROM openjdk:11 as base 
 WORKDIR /app
-ADD . /app 
+ADD . . 
 RUN chmod +x gradlew
 RUN ./gradlew build 
 COPY --from=base /app/build/libs/sampleWeb-0.0.1-SNAPSHOT.war
