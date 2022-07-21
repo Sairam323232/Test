@@ -1,6 +1,6 @@
 FROM openjdk:11 as base 
 WORKDIR /app
-ADD . . 
+COPY . . 
 RUN chmod +x gradlew
 RUN ./gradlew build 
 
