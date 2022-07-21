@@ -14,9 +14,9 @@ pipeline{
                         sh './gradlew sonarqube'
                     }
                     timeout(time: 1, unit: 'HOURS') {
-                        def quality=waitForQualityGate()
+                        def quality = waitForQualityGate()
                         if(quality.status !='OK'){
-                        error "build failed due to quality gate failed : ${quality.status}"
+                        error "build failed due to quality gate failed: ${quality.status}"
                         }
                     }
                 }
