@@ -9,11 +9,12 @@ pipeline{
             }
             steps{
                 scripts{
-                    withSonarQubeEnv(credentialsId: 'sonar-token') {
-                        sh 'chmod +x gradlew'
-                        sh './gradlew sonarqube'
-                    }
+                        scannerHome = tool 'SonarQube Scanner 2.8'
                 }
+                withSonarQubeEnv(credentialsId: 'sonar-token') {
+                                        sh 'chmod +x gradlew'
+                                        sh './gradlew sonarqube'
+                                    }
              }
 
         }
