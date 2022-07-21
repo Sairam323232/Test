@@ -16,21 +16,21 @@ pipeline{
                         sh 'chmod +x gradlew'
                         sh './gradlew sonarqube'
                     }
-//                     timeout(time: 1, unit: 'HOURS') {
-//                         def quality = waitForQualityGate()
-//                         if(quality.status !='OK'){
-//                         error "build failed due to quality gate failed: ${quality.status}"
-//                         }
-//                     }
+                    // timeout(time: 1, unit: 'HOURS') {
+                    //     def qg = waitForQualityGate()
+                    //     if(qg.status !='OK'){
+                    //     error "build failed due to quality gate failed: ${qg.status}"
+                    //     }
+                    // }
                 }
              }
 
         }
-        stage("Dpcker build & docker "){
+        stage("Docker build & docker "){
             steps{
                 script{
                     withCredentials([string(credentialsId: 'nexus_pass', variable: 'nexus_password')]) {
-
+    
                     sh '''
                      docker build -t 34.125.51.149:8082/appdata:${VERSION} .
                      docker login -u admin -p $nexus_password 34.125.51.149:8082
