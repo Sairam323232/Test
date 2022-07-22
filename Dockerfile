@@ -3,5 +3,3 @@ WORKDIR /app
 ADD . .
 RUN chmod +x gradlew
 RUN ./gradlew build
-COPY --from=base /app/build/sample-0.0.1-SNAPSHOT.war .
-RUN rm -rf ROOT && mv sample-0.0.1-SNAPSHOT.war ROOT.war
